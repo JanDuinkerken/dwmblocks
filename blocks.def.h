@@ -11,7 +11,7 @@ static const Block blocks[] = {
 
 	{"Bat: ", "sh $HOME/Projects/dwm/dwmblocks/scripts/battery.sh", 10, 0},
 
-	{"", "date '+%b %d (%a) %I:%M%p'",					5,		0},
+	{"", "date '+%b %d (%a) %H:%M'",					5,		0},
 };
 
 //sets delimiter between status commands. NULL character ('\0') means no delimiter.
