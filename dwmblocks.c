@@ -53,7 +53,6 @@ static void (*writestatus) () = pstdout;
 static char statusbar[LENGTH(blocks)][CMDLENGTH] = {0};
 static char statusstr[2][STATUSLENGTH];
 static int statusContinue = 1;
-static int returnStatus = 0;
 
 //opens process *cmd and stores output in *output
 void getcmd(const Block *block, char *output)
@@ -204,8 +203,8 @@ int main(int argc, char** argv)
 #endif
 	delimLen = MIN(delimLen, strlen(delim));
 	delim[delimLen++] = '\0';
-	signal(SIGTERM, termhandler);
-	signal(SIGINT, termhandler);
+	signal(SIGTERM, (void(*)(int))termhandler);
+	signal(SIGINT, (void(*)(int))termhandler);
 	statusloop();
 #ifndef NO_X
 	XCloseDisplay(dpy);

@@ -1,5 +1,5 @@
 PREFIX  := /usr/local
-CC      := cc
+CC      := gcc
 CFLAGS  := -pedantic -Wall -Wno-deprecated-declarations -Os
 LDFLAGS := -lX11
 
