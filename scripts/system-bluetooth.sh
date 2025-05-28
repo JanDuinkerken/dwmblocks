@@ -2,7 +2,7 @@
 
 bluetooth_connect() {
 	if bluetoothctl show | grep -q "Powered: yes"; then
-		devices_paired=$(bluetoothctl paired-devices | grep Device | cut -d ' ' -f 2)
+		devices_paired=$(bluetoothctl devices Paired | grep Device | cut -d ' ' -f 2)
 		for device in $devices_paired; do
 			bluetoothctl connect $device >> /dev/null
 		done
@@ -11,7 +11,7 @@ bluetooth_connect() {
 
 bluetooth_print() {
 	if bluetoothctl show | grep -q "Powered: yes"; then
-        devices_paired=$(bluetoothctl paired-devices | grep Device | cut -d ' ' -f 2)
+        devices_paired=$(bluetoothctl devices Paired | grep Device | cut -d ' ' -f 2)
         device_alias=""
 
         for device in $devices_paired; do
@@ -23,12 +23,12 @@ bluetooth_print() {
         done
 
         if [ "$device_alias" == "" ]; then
-            printf '  No device connected'
+            printf 'No device connected'
         else
-            printf '  %s' "$device_alias"
+            printf '%s' "$device_alias"
         fi
 	else
-		printf '  Disconnected'
+		printf 'Disconnected'
 	fi
 }
 
@@ -36,7 +36,7 @@ bluetooth_toggle() {
     if bluetoothctl show | grep -q "Powered: no"; then
         bluetoothctl power on >> /dev/null
     else
-        devices_paired=$(bluetoothctl paired-devices | grep Device | cut -d ' ' -f 2)
+        devices_paired=$(bluetoothctl devices Paired | grep Device | cut -d ' ' -f 2)
         echo "$devices_paired" | while read -r line; do
             bluetoothctl disconnect "$line" >> /dev/null
         done
