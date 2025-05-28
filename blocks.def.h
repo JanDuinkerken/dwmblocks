@@ -7,7 +7,9 @@ static const Block blocks[] = {
 
 //	{"Updates: ", "sh $HOME/Projects/dwm/dwmblocks/scripts/updates.sh", 350, 0},
 	
-	{"Blue: ", "sh $HOME/Projects/dwm/dwmblocks/scripts/system-bluetooth.sh", 10, 0},
+	{"Net: ", "sh $HOME/Projects/dwm/dwmblocks/scripts/net.sh", 30, 0},
+
+	{"Bth: ", "sh $HOME/Projects/dwm/dwmblocks/scripts/system-bluetooth.sh", 10, 0},
 
 	{"Bat: ", "sh $HOME/Projects/dwm/dwmblocks/scripts/battery.sh", 10, 0},
 
